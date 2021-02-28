@@ -7,10 +7,18 @@
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
 @code {
+    [Inject]
+    private ILogger<Counter> logger { get; set; }
+
     private int currentCount = 0;
 
     private void IncrementCount()
     {
         currentCount++;
+        logger.LogTrace($"LogTrace Count: {currentCount}");
+        logger.LogDebug($"LogDebug Count: {currentCount}");
+        logger.LogInformation($"LogInformation Count: {currentCount}");
+        logger.LogWarning($"LogWarning Count: {currentCount}");
+        logger.LogError($"LogError Count: {currentCount}");
     }
 }
